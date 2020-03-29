@@ -1,0 +1,17 @@
+{
+  "name": "sampleapp",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "appPort": [3000, 4000],
+  "remoteUser": "node",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/zsh"
+  },
+  "postCreateCommand": "npm i -g nodemon && yarn install && cd backend && yarn run seed:run",
+  "extensions": [
+    "esbenp.prettier-vscode",
+    "gamunu.vscode-yarn",
+    "prisma.vscode-graphql"
+  ]
+}

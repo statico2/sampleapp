@@ -1,0 +1,35 @@
+version: "3"
+services:
+  app:
+    user: node
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    volumes:
+      - ..:/workspace:cached
+      - cache:/home/node/.cache:cached
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    ports:
+      - 3000:3000
+      - 4000:4000
+
+    links:
+      - db
+
+  db:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: sekrit
+      POSTGRES_USER: sampleapp
+      POSTGRES_DB: sampleapp
+
+volumes:
+  cache:

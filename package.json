@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
+  "scripts": {
+    "lint": "tslint --project .",
+    "lint:fix": "tslint --fix --project .",
+    "build-types": "gql-gen",
+    "watch-types": "nodemon -e graphql,yml,ts,tsx -w schema.graphql -w codegen.yml -w frontend/lib -w frontend/pages -x gql-gen"
+  },
+  "dependencies": {
+    "@graphql-codegen/add": "1.12",
+    "@graphql-codegen/cli": "1.12",
+    "@graphql-codegen/typescript": "1.12",
+    "@graphql-codegen/typescript-operations": "1.12",
+    "@graphql-codegen/typescript-react-apollo": "1.12",
+    "@graphql-codegen/typescript-resolvers": "1.12",
+    "graphql": "14.6",
+    "graphql-tag": "2.10"
+  },
+  "devDependencies": {
+    "husky": "4.2",
+    "lint-staged": "10.0",
+    "prettier": "1.19",
+    "ts-node": "8.6",
+    "tslint": "6.0",
+    "tslint-config-prettier": "1.18",
+    "typescript": "3.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsc --noEmit && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "prettier --write --parser=typescript",
+      "git add"
+    ]
+  }
+}

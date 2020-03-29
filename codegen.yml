@@ -1,0 +1,35 @@
+schema:
+  - ./schema.graphql
+  # Apollo-Server puts Upload in the schema, but it can't be in the .graphql file.
+  # https://github.com/dotansimha/graphql-code-generator/issues/1073
+  - |
+    scalar Upload
+overwrite: true
+
+header: &header "\n
+  /****************************************************/\n
+  /*********** GENERATED FILE - DO NOT EDIT ***********/\n
+  /****************************************************/\n
+  \n
+  // tslint:disable: interface-over-type-literal array-type no-implicit-dependencies"
+
+generates:
+  ./backend/types.ts:
+    plugins:
+      - add: *header
+      - typescript
+      - typescript-resolvers
+
+  ./frontend/types.tsx:
+    documents:
+      - ./frontend/{components,lib,pages}/**/*.{ts,tsx}
+    plugins:
+      - add: *header
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withComponent: false
+      withHOC: false
+      withHooks: true
+      skipTypename: true

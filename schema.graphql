@@ -1,0 +1,20 @@
+# scalar Object
+
+type User {
+  id: ID!
+  email: String!
+}
+
+type LogInResponse {
+  success: Boolean!
+  error: String
+  token: String
+}
+
+type Query {
+  me: User
+}
+
+type Mutation {
+  login(email: String!, password: String!): LogInResponse
+}
