@@ -1,5 +1,7 @@
 # sampleapp
 
+This is an example app that attempts to be an up-to-date implementation of the following patterns as well as an example of how to get up an running with VS Code dev containers quickly.
+
 - Monorepo
 - TypeScript
 - React
@@ -9,13 +11,16 @@
 - GraphQL Codegen
 - Postgres
 - Knex
+- Prettier pre-commit hook
 
 ### Getting started
 
-1. Get the Remote Containers extension for VS Code and Docker and open this project.
+1. Install Docker and the Remote Containers extension for VS Code, then open this project.
 1. When prompted to run in a container, do that.
+  1. Once the remote shell opens, if the `/workspace` directory is empty, you'll need to re-clone the project in the current directory like `git clone git@github.com:statico/sampleapp.git .`
 1. Run the `migrate:latest` and `seed:run` tasks in backend.
-1. Run the `watch-types`, `frontend/dev` and `backend/dev` tasks simultaneously.
+1. Choose "Run Task" and run the `all dev servers` task.
+1. Go to http://localhost:3000
 
 ## Using a remote Docker host because your local dev box is too slow?
 
@@ -25,7 +30,7 @@
 
 ```
 {
-  "docker.host": "ssh://ian@devbox"
+  "docker.host": "ssh://me@devbox"
 }
 ```
 
