@@ -8,26 +8,28 @@
     "lint": "tslint --project .",
     "lint:fix": "tslint --fix --project .",
     "build-types": "gql-gen",
-    "watch-types": "nodemon -e graphql,yml,ts,tsx -w schema.graphql -w codegen.yml -w frontend/lib -w frontend/pages -x gql-gen"
+    "watch-types": "nodemon -e graphql,yml,ts,tsx -w schema.graphql -w codegen.yml -w frontend/lib -w frontend/pages -x gql-gen",
+    "backend:dev": "cd backend && yarn run -s dev",
+    "frontend:dev": "cd frontend && yarn run -s dev"
   },
   "dependencies": {
-    "@graphql-codegen/add": "1.12",
-    "@graphql-codegen/cli": "1.12",
-    "@graphql-codegen/typescript": "1.12",
-    "@graphql-codegen/typescript-operations": "1.12",
-    "@graphql-codegen/typescript-react-apollo": "1.12",
-    "@graphql-codegen/typescript-resolvers": "1.12",
-    "graphql": "14.6",
-    "graphql-tag": "2.10"
+    "@graphql-codegen/add": "2.0",
+    "@graphql-codegen/cli": "1.17",
+    "@graphql-codegen/typescript": "1.17",
+    "@graphql-codegen/typescript-operations": "1.17",
+    "@graphql-codegen/typescript-react-apollo": "2.0",
+    "@graphql-codegen/typescript-resolvers": "1.17",
+    "graphql": "15.3",
+    "graphql-tag": "2.11"
   },
   "devDependencies": {
     "husky": "4.2",
-    "lint-staged": "10.0",
-    "prettier": "1.19",
-    "ts-node": "8.6",
-    "tslint": "6.0",
+    "lint-staged": "10.2",
+    "prettier": "2.1",
+    "ts-node-dev": "^1.0.0-pre.60",
+    "tslint": "6.1",
     "tslint-config-prettier": "1.18",
-    "typescript": "3.8"
+    "typescript": "4.0"
   },
   "husky": {
     "hooks": {

@@ -12,7 +12,7 @@ const resolvers: Resolvers = {
   Query: {
     me: async (parent, {}, { user }) => {
       return user ? { id: user.id, email: user.email } : null
-    }
+    },
   },
   Mutation: {
     login: async (parent, { email, password }, ctx) => {
@@ -22,8 +22,8 @@ const resolvers: Resolvers = {
       } catch (err) {
         return { success: true, error: String(err) }
       }
-    }
-  }
+    },
+  },
 }
 
 const main = async () => {
@@ -46,12 +46,9 @@ const main = async () => {
       }
       let user: User
       try {
-        user = await db()
-          .first()
-          .from("users")
-          .where("id", payload.userId)
+        user = await db().first().from("users").where("id", payload.userId)
       } catch (err) {
-        res.status(500).send('user not found"')
+        res.status(500).send("user not found")
         return
       }
       // @ts-ignore
@@ -67,7 +64,7 @@ const main = async () => {
       // Add user info to resolver context
       // @ts-ignore
       return { user: req.user }
-    }
+    },
   })
   server.applyMiddleware({ app, path: "/" })
 
@@ -77,4 +74,4 @@ const main = async () => {
   })
 }
 
-main().catch(err => console.error(err))
+main().catch((err) => console.error(err))

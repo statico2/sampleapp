@@ -16,7 +16,8 @@ header: &header "\n
 generates:
   ./backend/types.ts:
     plugins:
-      - add: *header
+      - add:
+          content: *header
       - typescript
       - typescript-resolvers
 
@@ -24,7 +25,8 @@ generates:
     documents:
       - ./frontend/{components,lib,pages}/**/*.{ts,tsx}
     plugins:
-      - add: *header
+      - add:
+          content: *header
       - typescript
       - typescript-operations
       - typescript-react-apollo

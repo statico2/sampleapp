@@ -1,6 +1,5 @@
-import { useQuery } from "@apollo/react-hooks"
+import { useQuery } from "@apollo/client"
 import { useForm } from "react-hook-form"
-import { withApollo } from "../lib/apollo"
 import { WHO_AM_I } from "../lib/queries"
 import { useLogInMutation } from "../types"
 
@@ -11,7 +10,7 @@ const LoginForm = () => {
   const onSubmit = async (input: any) => {
     const { data } = await login({
       variables: { email: input.email, password: input.password },
-      refetchQueries: [{ query: WHO_AM_I }]
+      refetchQueries: [{ query: WHO_AM_I }],
     })
     if (data.result.success) {
       if (process.browser) {
@@ -19,6 +18,7 @@ const LoginForm = () => {
         location.reload()
       }
     } else {
+      // @ts-ignore
       setError("password", "invalid", data.result.error)
     }
   }
@@ -78,4 +78,4 @@ const IndexPage = () => {
   }
 }
 
-export default withApollo()(IndexPage)
+export default IndexPage

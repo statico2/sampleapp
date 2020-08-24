@@ -4,10 +4,37 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "all dev servers",
+      "dependsOn": [
+        "watch graphql types",
+        "backend dev server",
+        "frontend dev server"
+      ],
+      "runOptions": { "runOn": "folderOpen" }
+    },
+    {
+      "label": "watch graphql types",
       "type": "npm",
       "script": "watch-types",
       "group": "build",
-      "problemMatcher": []
+      "problemMatcher": [],
+      "presentation": { "group": "groupServerStuff" }
+    },
+    {
+      "label": "backend dev server",
+      "type": "npm",
+      "script": "backend:dev",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": { "group": "groupServerStuff" }
+    },
+    {
+      "label": "frontend dev server",
+      "type": "npm",
+      "script": "frontend:dev",
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": { "group": "groupServerStuff" }
     }
   ]
 }
