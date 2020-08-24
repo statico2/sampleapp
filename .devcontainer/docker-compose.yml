@@ -8,8 +8,10 @@ services:
       dockerfile: Dockerfile
 
     volumes:
+      # Uncomment for Linux/macOS:
       - ..:/workspace:cached
-      - cache:/home/node/.cache:cached
+      # Uncomment for Windows:
+      #- //e/sampleapp:/workspace:cached
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity

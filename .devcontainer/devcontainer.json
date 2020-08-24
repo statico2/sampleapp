@@ -3,7 +3,12 @@
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
-  "appPort": [3000, 4000],
+  // Uncomment for Windows:
+  //"workspaceMount": "source=remote-workspace,target=/workspace,type=volume",
+  "appPort": [
+    3000,
+    4000
+  ],
   "remoteUser": "node",
   "settings": {
     "terminal.integrated.shell.linux": "/bin/zsh"
