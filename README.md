@@ -13,11 +13,17 @@ This is an example app that attempts to be an up-to-date implementation of the f
 - Knex
 - Prettier pre-commit hook
 
+More info:
+
+- [VS Code - Developing inside a container](https://code.visualstudio.com/docs/remote/containers)
+- [Setting the project name for Docker Compose](https://code.visualstudio.com/docs/remote/containers-advanced#_setting-the-project-name-for-docker-compose)
+
 ### Getting started
 
 1. Install Docker and the Remote Containers extension for VS Code, then open this project.
 1. When prompted to run in a container, do that.
-  1. Once the remote shell opens, if the `/workspace` directory is empty, you'll need to re-clone the project in the current directory like `git clone git@github.com:statico/sampleapp.git .`
+  1. When the container is created, you may need to run `sudo chown -R node /workspace`
+  1. Also, if the `/workspace` directory is empty, you'll need to re-clone the project in the current directory like `git clone git@github.com:statico/sampleapp.git .`
 1. Run the `migrate:latest` and `seed:run` tasks in backend.
 1. Choose "Run Task" and run the `all dev servers` task.
 1. Go to http://localhost:3000
